@@ -1,11 +1,18 @@
 require 'rspec'
 require File.dirname(__FILE__) + '/../lib/String_Calculator.rb'
 
-# describe "ruby regex" do
-#   it "\\\\D for a space return false" do
-#     "9".gsub!(/\\D/, "m").should == "m"
-#   end
-# end
+describe "ruby regex" do
+  it "'1 2 3 4' splits on space to a 4 item array" do
+    "1 2 3 4".split(' ').count.should == 4
+  end
+  it "'1 2 3 4'.gsub(/\D/, ' ') splits on space to a 4 item array" do
+    "1 2 3 4".gsub!(/\D/,' ').split(' ').count.should == 4
+  end
+  it "'1 2 3 4'.gsub(/\D/, ' ')split.reduce(:+) with add = 10" do
+    "1 2 3 4".gsub!(/\D/,' ').split(' ').reduce(:+) == 10
+  end
+end
+
 describe String_Calculator do
 
   sc = nil
@@ -37,9 +44,9 @@ describe String_Calculator do
   end
 
   it "add any number of numbers" do
-          sc.Add("1,2,3").should == 6
-          sc.Add("1,2,3,99").should == 105
-          sc.Add("1,2,3,99, 42").should == 147
+    sc.Add("1,2,3").should == 6
+    sc.Add("1,2,3,99").should == 105
+    sc.Add("1,2,3,99, 42").should == 147
   end
 
   it "Add will handle newlines in addition to ','" do
@@ -50,11 +57,5 @@ describe String_Calculator do
     sc.Add("1\n2,,3  4").should == 10
   end
 
-
-  it "Add will treat spaces as a delimeter" do
-          sc.Add("1 2 3 4 5").should == 15
-  end
-
 end
-
 
