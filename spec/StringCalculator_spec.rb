@@ -62,3 +62,24 @@ describe String_Calculator do
   end
 
 end
+
+describe "define the delimeter" do
+  sc = nil
+
+  before(:each) do
+    sc = String_Calculator.new
+  end
+
+  after(:each) do
+    sc = nil
+  end
+
+  it "'//;\\n1;2' returns 3" do
+    sc.Add("//;\n1;2").should == 3
+  end
+
+  it "'//-\\n1-2-3-4' returns 10" do
+    sc.Add("//;\n1-2-3-4").should == 10
+  end
+end
+

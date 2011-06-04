@@ -6,13 +6,10 @@ class String_Calculator
     return 0 if s == nil
 
     numbers = get_array_from_string(s)
+    numbers = numbers.map { |n| n.to_i } 
+    return_val = numbers.reduce(:+)
 
-    return_val = 0
-    numbers.each do |n|
-      return_val += n.to_i unless n == nil
-    end
-
-    return return_val
+    return return_val ||= 0
   end
 
   def get_array_from_string s
