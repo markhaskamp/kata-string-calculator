@@ -57,16 +57,20 @@ describe "define the delimeter" do
     sc = nil
   end
 
-  it "'//;\n1;2' defines ; as the delimeter" do
+  it "'//;\\n1;2' defines ; as the delimeter" do
     sc.get_delimeter_regex_from_input_string("//;\n1;2").should == ';'
   end
 
-  it "'//;\n1;2' returns 3" do
+  it "'//;\\n1;2' returns 3" do
     sc.Add("//;\n1;2").should == 3
   end
 
-  it "'//-\n1-2-3-5-8' returns 19" do
+  it "'//-\\n1-2-3-5-8' returns 19" do
     sc.Add("//-\n1-2-3-5-8").should == 19
+  end
+
+  it "delimeter defintion prefix can be ommitted" do
+    sc.Add("1,2,3,5,8").should == 19
   end
 end
 
