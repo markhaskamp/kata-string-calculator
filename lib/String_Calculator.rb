@@ -17,7 +17,7 @@ class String_Calculator
         negative_numbers += "#{leader}#{n.to_s}"
         leader = ","
       else
-        return_val += n
+        return_val += n if n < 1000
       end
     end
 

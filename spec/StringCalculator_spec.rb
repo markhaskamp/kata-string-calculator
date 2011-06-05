@@ -24,7 +24,7 @@ describe String_Calculator do
   it "a single number returns that number" do
     sc.Add('1').should == 1
     sc.Add('66').should == 66
-    sc.Add('1492').should == 1492
+    sc.Add('1492').should == 0
   end
 
   it "two numbers, separated by commas, return their sum" do
@@ -95,6 +95,26 @@ describe "negatives throw an exception" do
 
   it "1,2,-1,-2 raises exception with -1 and -2 in the execption message" do
     lambda {sc.Add("1,2,-1,-2")}.should raise_error("negatives not allowed: -1,-2")
+  end
+end
+
+describe "numbers > 1000 aren't added" do
+  sc = nil
+
+  before(:each) do
+    sc = String_Calculator.new
+  end
+
+  after(:each) do
+    sc = nil
+  end
+
+  it "1,1001 == 1" do
+    sc.Add("1,1001").should == 1
+  end
+
+  it "//;\\n1;1001;2;1002 == 3" do
+    sc.Add("//;\n1;1001;2;1002").should == 3
   end
 end
 
