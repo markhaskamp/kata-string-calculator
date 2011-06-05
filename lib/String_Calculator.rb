@@ -33,7 +33,7 @@ class String_Calculator
 
   def get_delimeter_regex_from_input_string s
 
-    s =~ /^\/\/(.)\n/
+    s =~ /^\/\/(.*?)\n/
 
     return $1 unless $1 == nil
 

@@ -118,3 +118,27 @@ describe "numbers > 1000 aren't added" do
   end
 end
 
+describe "Delimeters can be longer than 1 characters" do
+  sc = nil
+
+  before(:each) do
+    sc = String_Calculator.new
+  end
+
+  after(:each) do
+    sc = nil
+  end
+
+  it "//foo\n1foo2foo3foo5foo8 == 19" do
+    sc.Add("//foo\n1foo2foo3foo5foo8").should == 19
+  end
+
+  it "//<>o\n1<>2<>3<>5<>8 == 19" do
+    sc.Add("//<>\n1<>2<>3<>5<>8").should == 19
+  end
+
+  it "//a long delimeter with spaces\n1a long delimeter with spaces2a long delimeter with spaces3a long delimeter with spaces5a long delimeter with spaces8a long delimeter with spaces13 == 32" do
+    sc.Add("//a long delimeter with spaces\n1a long delimeter with spaces2a long delimeter with spaces3a long delimeter with spaces5a long delimeter with spaces8a long delimeter with spaces13").should == 32
+  end
+end
+
