@@ -7,6 +7,10 @@ class String_Calculator
 
     numbers = get_array_from_string(s)
     numbers = numbers.map { |n| n.to_i } 
+    
+    numbers.each do |n|
+      raise("negatives not allowed") if n < 0
+    end
     return_val = numbers.reduce(:+)
 
     return return_val ||= 0

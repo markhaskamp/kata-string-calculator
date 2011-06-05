@@ -74,3 +74,20 @@ describe "define the delimeter" do
   end
 end
 
+describe "negatives throw an exception" do
+  sc = nil
+
+  before(:each) do
+    sc = String_Calculator.new
+  end
+
+  after(:each) do
+    sc = nil
+  end
+
+
+  it "Add will throw an exception if input string contains a negative number" do
+    lambda {sc.Add("1,-1")}.should raise_error("negatives not allowed")
+  end
+end
+
