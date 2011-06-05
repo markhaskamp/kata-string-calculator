@@ -5,14 +5,23 @@ class String_Calculator
 
     return 0 if s == nil
 
+    return_val = 0
+    negative_numbers = ''
+    leader = ''
+
     numbers = get_array_from_string(s)
     numbers = numbers.map { |n| n.to_i } 
     
     numbers.each do |n|
-      raise("negatives not allowed") if n < 0
+      if (n < 0)
+        negative_numbers += "#{leader}#{n.to_s}"
+        leader = ","
+      else
+        return_val += n
+      end
     end
-    return_val = numbers.reduce(:+)
 
+    raise "negatives not allowed: #{negative_numbers}" if negative_numbers.length > 0
     return return_val ||= 0
   end
 

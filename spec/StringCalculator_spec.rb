@@ -85,9 +85,16 @@ describe "negatives throw an exception" do
     sc = nil
   end
 
-
   it "Add will throw an exception if input string contains a negative number" do
-    lambda {sc.Add("1,-1")}.should raise_error("negatives not allowed")
+    lambda {sc.Add("1,-1")}.should raise_error("negatives not allowed: -1")
+  end
+
+  it "negative numbers throw an exception, exception contains the negative number" do
+    lambda {sc.Add("1,-1")}.should raise_error("negatives not allowed: -1")
+  end
+
+  it "1,2,-1,-2 raises exception with -1 and -2 in the execption message" do
+    lambda {sc.Add("1,2,-1,-2")}.should raise_error("negatives not allowed: -1,-2")
   end
 end
 
