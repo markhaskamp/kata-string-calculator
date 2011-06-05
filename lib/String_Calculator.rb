@@ -13,9 +13,17 @@ class String_Calculator
   end
 
   def get_array_from_string s
-#    s.gsub!(/\D/, ' ')
-
-    a = s.split(/[\n,]/)
+    delimeter = get_delimeter_regex_from_input_string s
+    a = s.split(delimeter)
     return a
+  end
+
+  def get_delimeter_regex_from_input_string s
+
+    s =~ /^\/\/(.)\n/
+
+    return $1 unless $1 == nil
+
+    return /[\n,]/
   end
 end
