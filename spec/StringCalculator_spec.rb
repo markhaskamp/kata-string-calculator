@@ -37,17 +37,13 @@ describe String_Calculator do
     sc.Add("1,2,3,99, 42").should == 147
   end
 
-  # it "Add will handle newlines in addition to ','" do
-  #   sc.Add("1\\n2,3").should == 6
-  # end
+  it "Add will handle newlines in addition to ','" do
+    sc.Add("1\n2,3").should == 6
+  end
 
-  # it "Add will handle multiple consecutive delimeters" do
-  #   sc.Add("1\\n2,,3  4").should == 10
-  # end
-
-  # it "'1 2 3 4 5' will add up to 15" do
-  #   sc.Add("1 2 3 4 5").should == 15
-  # end
+  it "Add will handle newlines in addition to ','" do
+    sc.Add("1\n2,3\n4\n5").should == 15
+  end
 
 end
 

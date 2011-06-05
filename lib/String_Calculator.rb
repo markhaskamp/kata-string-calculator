@@ -15,7 +15,7 @@ class String_Calculator
   def get_array_from_string s
 #    s.gsub!(/\D/, ' ')
 
-    a = s.split(',')
+    a = s.split(/[\n,]/)
     return a
   end
 end
